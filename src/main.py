@@ -4,8 +4,8 @@ from dataHandler.writer import CSVWriter
 from dataHandler.loader import DataFrameLoader
 
 url = 'https://www.openml.org/data/download/22102255/dataset'
-txt_file_name = 'csgo_dataset.txt'
-csv_file_name = 'df.csv'
+txt_file_name = 'data/csgo_dataset.txt'
+csv_file_name = 'data/df.csv'
 
 downloader = DataFetcher(url, txt_file_name)
 downloader.download()
