@@ -5,6 +5,7 @@ import json
 class DataframeProcessor:
     def __init__(self) -> None:
         self.corr_thresh = 0.1
+        self.model_type = "full"
 
 
     def process(self, df):
@@ -16,8 +17,11 @@ class DataframeProcessor:
     
         for func in transformation_functions:
             df = func(df)
+
+        if self.model_type == "full":
+            return df
         
-        return df
+        return self.clean_loser_data(df)
     
     def map_to_categorical(self, df):
         df['map'], mapa_categorias = pd.factorize(df['map'])
@@ -53,4 +57,4 @@ class DataframeProcessor:
         
     @staticmethod
     def clean_loser_data(df):
-        pass
+        return df
