@@ -5,6 +5,7 @@ from dataHandler.loader import DataFrameLoader
 from dataHandler.processor import DataframeProcessor
 
 from eda.eda import EDA
+from model.trainer import Trainer
 
 from pathlib import Path
 import pandas as pd
@@ -31,10 +32,8 @@ else:
     df = pd.read_csv(csv_file_name)
 
 processor = DataframeProcessor()
-df = processor.process(df)
+df_processed = processor.process(df)
 
-eda = EDA(df)
-eda.plot_correlations()
+model_trainer = Trainer()
+model_trainer.train(df_processed)
 
-
-print(df.head())
